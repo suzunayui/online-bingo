@@ -1,0 +1,34 @@
+{
+  "name": "online-bingo-backend",
+  "version": "1.0.0",
+  "description": "オンラインビンゴバックエンド",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "docker:build": "docker build -t online-bingo-backend .",
+    "docker:run": "docker run -p 3000:3000 online-bingo-backend",
+    "docker:up": "cd .. && docker-compose up -d",
+    "docker:down": "cd .. && docker-compose down",
+    "docker:dev": "cd .. && docker-compose -f docker-compose.dev.yml up -d",
+    "docker:logs": "cd .. && docker-compose logs -f",
+    "docker:status": "cd .. && docker-compose ps"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.5",
+    "cors": "^2.8.5",
+    "uuid": "^9.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "bingo",
+    "game",
+    "websocket",
+    "multiplayer"
+  ],
+  "author": "suzunayui",
+  "license": "MIT"
+}

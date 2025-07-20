@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オンラインビンゴ</title>
+    <link rel="stylesheet" href="owari.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎉 オンラインビンゴ 🎊</h1>
+            <p style="color: #ff6b6b; font-weight: bold; font-size: 1.2rem;">🌟 パーティータイム 🌟</p>
+        </header>
+        
+        <main>
+            <!-- スタート画面 -->
+            <div id="startScreen" class="start-screen">
+                <div class="welcome-section">
+                    <h2>🎊 ビンゴゲームへようこそ！ 🎊</h2>
+                    <p>友達と一緒にオンラインビンゴを楽しもう！</p>
+                </div>
+                
+                <div class="room-options">
+                    <div class="option-card create-room">
+                        <h3>🏠 新しいルームを作成</h3>
+                        <p>新しいビンゴルームを作成して友達を招待しよう</p>
+                        <div class="create-room-form">
+                            <input type="text" id="playerName" placeholder="あなたの名前を入力" maxlength="20" />
+                            <input type="text" id="roomName" placeholder="ルーム名（任意）" maxlength="30" />
+                            <button id="createRoomBtn" class="btn-primary">🚀 ルーム作成</button>
+                        </div>
+                    </div>
+                    
+                    <div class="option-card join-room">
+                        <h3>🔗 ルーム参加</h3>
+                        <p>ルームIDを入力して友達のゲームに参加しよう</p>
+                        <div class="join-room-form">
+                            <input type="text" id="joinPlayerName" placeholder="あなたの名前を入力" maxlength="20" />
+                            <input type="text" id="roomId" placeholder="ルームID" maxlength="10" />
+                            <button id="joinRoomBtn" class="btn-secondary">🎯 ルーム参加</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="connection-status" id="connectionStatus">
+                    <span class="status-indicator" id="statusIndicator">🔴</span>
+                    <span id="statusText">サーバーに接続中...</span>
+                </div>
+            </div>
+            
+            <!-- ゲーム画面 -->
+            <div id="gameScreen" class="game-screen" style="display: none;">
+                <div class="game-header">
+                    <div class="room-info">
+                        <h3>🏠 ルーム: <span id="currentRoomId">-</span></h3>
+                        <p>👤 プレイヤー: <span id="currentPlayerName">-</span></p>
+                    </div>
+                    <div class="game-controls">
+                        <button id="callNumberBtn" class="btn-primary" style="display: none;">🎲 数字を呼ぶ</button>
+                        <button id="leaveRoomBtn" class="btn-warning">🚪 ルーム退出</button>
+                    </div>
+                </div>
+                
+                <div class="players-list" id="playersList">
+                    <!-- プレイヤー一覧がここに表示されます -->
+                </div>
+                
+                <div class="called-numbers" id="calledNumbers" style="display: none;">
+                    <h4>📢 呼ばれた数字:</h4>
+                    <div class="numbers-grid" id="numbersGrid">
+                        <!-- 呼ばれた数字がここに表示されます -->
+                    </div>
+                </div>
+                
+                <div class="bingo-card" id="bingoCard">
+                    <div class="card-header">
+                        <div class="letter">B</div>
+                        <div class="letter">I</div>
+                        <div class="letter">N</div>
+                        <div class="letter">G</div>
+                        <div class="letter">O</div>
+                    </div>
+                    <div class="card-grid" id="cardGrid">
+                        <!-- ビンゴカードのセルがここに動的に生成されます -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

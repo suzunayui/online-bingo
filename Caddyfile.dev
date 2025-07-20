@@ -1,0 +1,17 @@
+# 開発用Caddyfile
+
+:80 {
+    # フロントエンドファイルを配信
+    root * /usr/share/caddy
+    file_server
+    
+    # WebSocketとAPI通信をバックエンドコンテナに転送
+    reverse_proxy /socket.io/* bingo-backend-dev:3000
+    reverse_proxy /api/* bingo-backend-dev:3000
+    
+    # 開発用ログ設定
+    log {
+        output stdout
+        level DEBUG
+    }
+}

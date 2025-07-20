@@ -1,0 +1,42 @@
+version: '3.8'
+
+# 開発用Docker Compose設定
+
+services:
+  # オンラインビンゴバックエンド（開発版）
+  bingo-backend-dev:
+    build: 
+      context: ./backend
+      target: development  # マルチステージビルド対応
+    container_name: online-bingo-backend-dev
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    volumes:
+      - ./backend:/app
+      - /app/node_modules  # node_modulesをボリュームにマウント
+    restart: unless-stopped
+    networks:
+      - bingo-network-dev
+    command: ["npm", "run", "dev"]
+
+  # 開発用Caddy
+  caddy-dev:
+    image: caddy:2-alpine
+    container_name: online-bingo-caddy-dev
+    ports:
+      - "8080:80"
+    volumes:
+      - ./Caddyfile.dev:/etc/caddy/Caddyfile:ro
+      - ./frontend:/usr/share/caddy:ro
+    restart: unless-stopped
+    depends_on:
+      - bingo-backend-dev
+    networks:
+      - bingo-network-dev
+
+networks:
+  bingo-network-dev:
+    driver: bridge

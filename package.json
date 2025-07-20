@@ -1,0 +1,50 @@
+{
+  "name": "online-bingo",
+  "version": "1.0.0",
+  "description": "オンラインビンゴアプリ - リアルタイムマルチプレイヤー対応",
+  "main": "backend/server.js",
+  "scripts": {
+    "help": "echo '🎉 オンラインビンゴ管理コマンド' && echo '' && echo '📋 使用可能なコマンド:' && echo '  npm run start     - 本番環境起動' && echo '  npm run dev       - 開発環境起動' && echo '  npm run stop      - コンテナ停止' && echo '  npm run logs      - ログ表示' && echo '  npm run status    - 状態確認' && echo '  npm run clean     - リソース削除' && echo '  npm run rebuild   - 完全リビルド'",
+    "start": "./manage.sh start",
+    "dev": "./manage.sh dev",
+    "stop": "./manage.sh stop",
+    "restart": "./manage.sh restart",
+    "build": "./manage.sh build",
+    "logs": "./manage.sh logs",
+    "logs:backend": "./manage.sh logs backend",
+    "logs:caddy": "./manage.sh logs caddy",
+    "status": "./manage.sh status",
+    "clean": "./manage.sh clean",
+    "shell": "./manage.sh shell",
+    "health": "./manage.sh health",
+    "rebuild": "./manage.sh rebuild",
+    "setup": "chmod +x setup.sh manage.sh && echo '✅ セットアップ完了'",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build",
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up -d",
+    "docker:logs": "docker-compose logs -f",
+    "docker:ps": "docker-compose ps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/suzunayui/online-bingo.git"
+  },
+  "keywords": [
+    "bingo",
+    "game",
+    "multiplayer",
+    "websocket",
+    "realtime",
+    "docker"
+  ],
+  "author": "suzunayui",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {},
+  "workspaces": [
+    "backend"
+  ]
+}

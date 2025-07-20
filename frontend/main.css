@@ -1,0 +1,831 @@
+/* リセットCSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #96ceb4 75%, #feca57 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "🎉";
+    position: fixed;
+    top: 10%;
+    left: 5%;
+    font-size: 3rem;
+    opacity: 0.8;
+}
+
+body::after {
+    content: "🎊";
+    position: fixed;
+    top: 20%;
+    right: 10%;
+    font-size: 2.5rem;
+    opacity: 0.8;
+}
+
+.container {
+    background: white;
+    border-radius: 25px;
+    box-shadow: 
+        0 0 50px rgba(255, 107, 107, 0.3),
+        0 0 100px rgba(78, 205, 196, 0.2),
+        0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 650px;
+    width: 90%;
+    position: relative;
+    border: 5px solid;
+    border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57) 1;
+}
+
+.container::before {
+    content: "🎈";
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    font-size: 2rem;
+}
+
+.container::after {
+    content: "🎁";
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    font-size: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+header h1 {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+header h1::before {
+    content: "🌟";
+    position: absolute;
+    left: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+}
+
+header h1::after {
+    content: "🌟";
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.6);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #feca57, #ff9ff3, #54a0ff);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(254, 202, 87, 0.4);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(254, 202, 87, 0.6);
+}
+
+.bingo-card {
+    margin: 30px 0;
+    border: 5px solid;
+    border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3) 1;
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 
+        0 0 30px rgba(255, 107, 107, 0.3),
+        0 0 60px rgba(78, 205, 196, 0.2);
+    position: relative;
+}
+
+.bingo-card::before {
+    content: "🎪";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    z-index: 10;
+}
+
+.card-header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+}
+
+.letter {
+    padding: 20px;
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: white;
+    border-right: 3px solid rgba(255, 255, 255, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-transform: uppercase;
+}
+
+.letter:last-child {
+    border-right: none;
+}
+
+.letter:nth-child(1)::after { content: "🔥"; }
+.letter:nth-child(2)::after { content: "💎"; }
+.letter:nth-child(3)::after { content: "⭐"; }
+.letter:nth-child(4)::after { content: "🎯"; }
+.letter:nth-child(5)::after { content: "🚀"; }
+
+.letter::after {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    font-size: 1rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+    padding: 3px;
+}
+
+.cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+}
+
+.cell:hover {
+    background: linear-gradient(45deg, #fff5f5, #f0ffff);
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    border: 2px solid #ff6b6b;
+    z-index: 5;
+}
+
+.cell.marked {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+}
+
+.cell.marked::before {
+    content: "✨";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 1rem;
+}
+
+.cell.free {
+    background: linear-gradient(45deg, #feca57, #ff9ff3, #54a0ff);
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cell.free::after {
+    content: "🎊";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    font-size: 1.2rem;
+}
+
+.info {
+    text-align: center;
+    background: linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 107, 107, 0.3);
+    position: relative;
+}
+
+.info::before {
+    content: "💡";
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 1.5rem;
+    background: white;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.info p {
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.info p:first-child {
+    color: #ff6b6b;
+}
+
+.info p:last-child {
+    color: #4ecdc4;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 480px) {
+    .container {
+        padding: 25px;
+        width: 95%;
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+    }
+    
+    header h1::before,
+    header h1::after {
+        display: none;
+    }
+    
+    .letter {
+        font-size: 1.8rem;
+        padding: 15px;
+    }
+    
+    .cell {
+        font-size: 1.4rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    
+    .info {
+        padding: 15px;
+    }
+    
+    .info p {
+        font-size: 1rem;
+    }
+}
+
+/* マルチプレイヤー用追加スタイル */
+.room-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: linear-gradient(45deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 107, 107, 0.3);
+    margin: 10px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.waiting-message {
+    background: linear-gradient(45deg, rgba(254, 202, 87, 0.2), rgba(255, 159, 243, 0.2));
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid rgba(254, 202, 87, 0.4);
+    margin: 10px 0;
+    text-align: center;
+    font-style: italic;
+    color: #666;
+}
+
+.called-number-display {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+}
+
+.called-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.called-number .number {
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.called-number .letter {
+    font-size: 2rem;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes celebration {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.02) rotate(1deg); }
+    75% { transform: scale(1.02) rotate(-1deg); }
+}
+
+.message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+}
+
+.message-success {
+    background: linear-gradient(45deg, #28a745, #20c997);
+}
+
+.message-error {
+    background: linear-gradient(45deg, #dc3545, #fd7e14);
+}
+
+.message-warning {
+    background: linear-gradient(45deg, #ffc107, #fd7e14);
+}
+
+.message-info {
+    background: linear-gradient(45deg, #17a2b8, #6f42c1);
+}
+
+.message-bingo {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+    font-size: 1.2rem;
+    animation: slideIn 0.3s ease-out, pulse 0.5s ease-in-out 0.3s;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* メッセージ表示用スタイル */
+.message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 15px;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: messageSlide 0.5s ease-out;
+    max-width: 300px;
+    word-wrap: break-word;
+}
+
+.message-info {
+    background: linear-gradient(135deg, #45b7d1, #96ceb4);
+    color: white;
+    border-left: 5px solid #2980b9;
+}
+
+.message-success {
+    background: linear-gradient(135deg, #96ceb4, #4ecdc4);
+    color: white;
+    border-left: 5px solid #27ae60;
+}
+
+.message-bingo {
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    color: white;
+    border-left: 5px solid #e74c3c;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.5);
+}
+
+@keyframes messageSlide {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* お祝いアニメーション */
+@keyframes celebration {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.02); }
+    50% { transform: scale(1.05); }
+    75% { transform: scale(1.02); }
+}
+
+/* スタート画面スタイル */
+.start-screen {
+    width: 100%;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.welcome-section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.welcome-section p {
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.room-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .room-options {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .option-card h3 {
+        font-size: 1.3rem;
+        line-height: 1.2;
+    }
+    
+    .option-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        width: 95%;
+    }
+    
+    .option-card h3 {
+        font-size: 1.1rem;
+        line-height: 1.1;
+    }
+    
+    .option-card {
+        padding: 15px;
+    }
+    
+    .option-card p {
+        font-size: 0.9rem;
+    }
+}
+
+.option-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.option-card::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+    border-radius: 23px;
+    z-index: -1;
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.create-room {
+    background: linear-gradient(135deg, #ff6b6b20 0%, #feca5720 100%);
+}
+
+.join-room {
+    background: linear-gradient(135deg, #4ecdc420 0%, #45b7d120 100%);
+}
+
+.option-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.3;
+}
+
+.option-card p {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.create-room-form,
+.join-room-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.create-room-form input,
+.join-room-form input {
+    padding: 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 15px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.create-room-form input:focus,
+.join-room-form input:focus {
+    outline: none;
+    border-color: #4ecdc4;
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+}
+
+.connection-status {
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+}
+
+.status-indicator {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+.status-indicator.connected {
+    color: #27ae60;
+}
+
+.status-indicator.disconnected {
+    color: #e74c3c;
+}
+
+#statusText {
+    font-weight: 500;
+    color: #666;
+}
+
+/* ゲーム画面スタイル */
+.game-screen {
+    width: 100%;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+}
+
+@media (max-width: 768px) {
+    .game-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+.room-info h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+.room-info p {
+    margin: 0;
+    color: #666;
+    font-size: 1rem;
+}
+
+.game-controls {
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .game-controls {
+        justify-content: center;
+    }
+}
+
+.players-list {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: linear-gradient(135deg, #96ceb420 0%, #4ecdc420 100%);
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+}
+
+.players-list h4 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.player-item {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px;
+    background: white;
+    border-radius: 20px;
+    border: 2px solid #4ecdc4;
+    color: #333;
+    font-weight: 500;
+}
+
+.player-item.host {
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    color: white;
+    border-color: #ff6b6b;
+}
+
+.called-numbers {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: linear-gradient(135deg, #45b7d120 0%, #96ceb420 100%);
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+}
+
+.called-numbers h4 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 10px;
+}
+
+.called-number {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 2px solid #45b7d1;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #45b7d1;
+    font-size: 1.1rem;
+}
+
+.called-number.recent {
+    background: linear-gradient(135deg, #ff6b6b, #feca57);
+    color: white;
+    border-color: #ff6b6b;
+    animation: highlight 1s ease-out;
+}
+
+@keyframes highlight {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #feca57, #ff6b6b);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #f39c12, #e74c3c);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(243, 156, 18, 0.3);
+}

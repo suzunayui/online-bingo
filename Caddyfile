@@ -1,0 +1,28 @@
+# Docker用Caddyfile
+
+# 開発環境用HTTP設定
+:80 {
+    # フロントエンドファイルを配信
+    root * /usr/share/caddy
+    file_server
+    
+    # WebSocketとAPI通信をバックエンドコンテナに転送
+    reverse_proxy /socket.io/* bingo-backend:3000
+    reverse_proxy /api/* bingo-backend:3000
+    
+    # ログ設定
+    log {
+        output file /var/log/caddy/access.log
+    }
+    
+    # セキュリティヘッダー（開発環境用）
+    header {
+        # XSS保護
+        X-Content-Type-Options nosniff
+        X-Frame-Options SAMEORIGIN
+        X-XSS-Protection "1; mode=block"
+        
+        # Content Security Policy（開発環境用）
+        Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' ws: wss: http:;"
+    }
+}
